@@ -3,7 +3,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import { config } from 'dotenv';
 import svelteSVG from "rollup-plugin-svelte-svg";
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -49,6 +51,13 @@ export default {
 		// instead of npm run dev), minify
 		production && terser(),
 		svelteSVG(),
+		replace({
+      process: JSON.stringify({
+        env: {
+          ...config().parsed,
+        },
+      }),
+    }),
 	],
 	watch: {
 		clearScreen: false

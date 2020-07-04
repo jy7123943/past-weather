@@ -2,6 +2,9 @@
   import { get } from 'svelte/store';
   import { onDestroy } from 'svelte';
   import geolocationStore from '../../store/geolocation.js';
+  import { getAddressByGeolocation } from '../../api';
+
+  getAddressByGeolocation(37.5665, 126.9780);
 
   const geolocationOptions = {
     timeout: 10000,
@@ -39,12 +42,14 @@
 
   onDestroy(() => {
     navigator.geolocation.clearWatch(watchID);
-	});
+  });
 </script>
 
 <header>
   {#if $geolocationStore.fetchState === 'DONE'}
     <h1>날씨</h1>
+  {:else if $geolocationStore.fetchState === 'ERROR'}
+    <h1>에러</h1>
   {:else}
     <h1>로딩중</h1>
   {/if}
