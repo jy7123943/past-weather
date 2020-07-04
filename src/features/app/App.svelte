@@ -1,17 +1,12 @@
 <script>
   import { Router, Link, Route } from 'svelte-routing';
+  import Navigator from './Navigator.svelte';
 
   export let url = '';
 </script>
 
 <main>
   <Router url='{ url }'>
-    <nav>
-      <Link to='/yesterday'>어제</Link>
-      <Link to='/'>오늘</Link>
-      <Link to='/tomorrow'>내일</Link>
-      <Link to='/week'>일주일</Link>
-    </nav>
     <div>
       <Route path='/yesterday'>
         <div>어제</div>
@@ -26,8 +21,10 @@
         <div>오늘</div>
       </Route>
     </div>
+    <Navigator />
   </Router>
 </main>
 
 <style>
+  
 </style>
