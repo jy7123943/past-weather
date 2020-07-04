@@ -1,11 +1,13 @@
 <script>
   import { Router, Link, Route } from 'svelte-routing';
   import Navigator from './Navigator.svelte';
+  import Header from './Header.svelte';
 
   export let url = '';
 </script>
 
 <main>
+  <Header />
   <Router url='{ url }'>
     <div>
       <Route path='/yesterday'>
