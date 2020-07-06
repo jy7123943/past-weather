@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import { config } from 'dotenv';
 import svelteSVG from "rollup-plugin-svelte-svg";
 import replace from '@rollup/plugin-replace';
+import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -57,7 +58,8 @@ export default {
           ...config().parsed,
         },
       }),
-    }),
+		}),
+		json(),
 	],
 	watch: {
 		clearScreen: false
