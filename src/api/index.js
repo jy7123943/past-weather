@@ -7,15 +7,16 @@ const headers = {
 
 export const getAddressByGeolocation = async (latitude, longitude) => {
   try {
-    const data = await axios.get(`${KAKAO_BASE_URL}/v2/local/geo/coord2regioncode.json`, {
+    const { data } = await axios.get(`${KAKAO_BASE_URL}/v2/local/geo/coord2address.json`, {
       headers,
       params: {
         x: longitude,
         y: latitude
       }
     });
-    console.log('getAddressByGeolocation -> data', data);
+
+    return data;
   } catch (error) {
-    console.dir(error);
+    throw error;
   }
 };
