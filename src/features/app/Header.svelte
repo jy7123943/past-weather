@@ -8,7 +8,7 @@
   const geolocationOptions = {
     timeout: 10000,
     enableHighAccuracy: true,
-    maximumAge: 600000
+    maximumAge: 6000000
   };
 
   const DEFAULT_ADDRESS = {
@@ -20,12 +20,12 @@
   const handleSuccess = async ({ coords }) => {
     let { location } = get(geolocationStore);
 
+    if (!location) return;
+
     const isSameLocation = coords.latitude === location.latitude
       && coords.longitude === location.longitude;
 
-    if (isSameLocation) {
-      return;
-    }
+    if (isSameLocation) return;
 
     const {
       documents,
@@ -50,6 +50,7 @@
   };
 
   const handleError = (error) => {
+    console.log('handleError -> error', error);
     geolocationStore.update(prevStore => ({
       ...prevStore,
       fetchState: 'ERROR',
