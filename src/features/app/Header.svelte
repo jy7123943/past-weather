@@ -81,3 +81,9 @@
     />
   {/if}
 </header>
+
+<style>
+  header {
+    padding: 30px 0 15px;
+  }
+</style>

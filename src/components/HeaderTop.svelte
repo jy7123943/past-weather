@@ -4,10 +4,24 @@
 </script>
 
 <h1>
-  <strong>
+  <span class='title'>
     {title}
-  </strong>
+  </span>
   <span>
     {subtitle}
   </span>
 </h1>
+
+<style>
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .title:after {
+    content: ',';
+    margin-right: 5px;
+  }
+</style>
