@@ -1,10 +1,15 @@
 <script>
+  import moment from 'moment-timezone';
   import Container from '../../components/Container.svelte';
   export let current;
   export let hourly;
+  export let timezone = 'Asia/Seoul';
   console.log('hourly', hourly);
   console.log('current', current);
 
+  const convertDate = (dt) => {
+    return moment(dt * 1000).tz(timezone).format('YYYY MM DD HH:mm');
+  };
 // clouds: 75
 // dew_point: 17.58
 // dt: 1594038688
@@ -22,5 +27,5 @@
 </script>
 
 <Container>
-  <div>Weather</div>
+  <div>{convertDate(current.dt)}</div>
 </Container>

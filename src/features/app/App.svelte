@@ -28,7 +28,7 @@
   {#if $geolocationStore.fetchState !== 'LOADING'}
     {#await weatherPromise}
       <div>Loading...</div>
-    {:then { current, hourly, daily }}
+    {:then { current, hourly, daily, timezone, timezone_offset }}
       <Router url='{ url }'>
         <div>
           <Route path='/yesterday'>
@@ -41,7 +41,12 @@
             <div>일주일</div>
           </Route>
           <Route path='/'>
-            <Today {current} {hourly} />
+            <Today
+              {current}
+              {hourly}
+              {timezone}
+              timeOffset={timezone_offset}
+            />
           </Route>
         </div>
         <Navigator />
