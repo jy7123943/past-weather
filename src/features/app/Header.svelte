@@ -8,7 +8,7 @@
   const geolocationOptions = {
     timeout: 10000,
     enableHighAccuracy: true,
-    maximumAge: 6000000
+    maximumAge: 100000
   };
 
   const DEFAULT_ADDRESS = {
@@ -61,6 +61,10 @@
       }
     }));
   };
+
+  if (!navigator.geolocation) {
+    handleError();
+  }
 
   const watchID = navigator.geolocation.watchPosition(handleSuccess, handleError, geolocationOptions);
 
