@@ -23,10 +23,12 @@ export const getAddressByGeolocation = async (latitude, longitude) => {
 
 const WEATHER_BASE_URL = 'https://api.openweathermap.org';
 
-export const getWeatherData = async (latitude, longitude, exclude) => {
+export const getWeatherData = async (latitude, longitude, exclude = 'minutely') => {
   try {
     const { data } = await axios.get(`${WEATHER_BASE_URL}/data/2.5/onecall`, {
       params: {
+        units: 'metric',
+        lang: 'kr',
         lat: latitude,
         lon: longitude,
         exclude: exclude,
