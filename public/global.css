@@ -48,6 +48,10 @@ h1 {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
 /* Grouping content
    ========================================================================== */
 
@@ -353,4 +357,10 @@ template {
 
 [hidden] {
   display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
