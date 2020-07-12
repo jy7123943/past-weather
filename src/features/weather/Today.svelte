@@ -23,14 +23,18 @@
 />
 <DayWeatherList
   weatherData={current}
-  rain={day.rain}
-  snow={day.snow}
 >
   <li slot='minMax'>
     <div>최고/최저</div>
     <div>
       {day.temp.max.toFixed(1)}°C /
       {day.temp.min.toFixed(1)}°C
+    </div>
+  </li>
+  <li slot='feelsLike'>
+    <div>현재 체감 온도</div>
+    <div>
+      {current.feels_like.toFixed(1)}°C
     </div>
   </li>
   {#if current.rain}
@@ -41,7 +45,7 @@
   {/if}
   {#if day.rain}
     <li>
-      <div>오늘 강우량</div>
+      <div>총 강우량</div>
       <div>{day.rain}mm</div>
     </li>
   {/if}
@@ -53,7 +57,7 @@
   {/if}
   {#if day.snow}
     <li>
-      <div>오늘 강설량</div>
+      <div>총 강설량</div>
       <div>{day.snow}mm</div>
     </li>
   {/if}

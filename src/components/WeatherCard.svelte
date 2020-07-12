@@ -5,20 +5,34 @@
   export let time;
   export let currentTemp;
   export let iconURL;
+  export let tempMaxMin;
 </script>
 
 <div class='section'>
   <div class='date'>
-    <div
-      class='icon'
-      style='background-image: url({iconURL})'
-    />
-    <p>{date}</p>
-    <p>{time}</p>
+    {#if iconURL}
+      <div
+        class='icon'
+        style='background-image: url({iconURL})'
+      />
+    {/if}
+    {#if date}
+      <p>{date}</p>
+    {/if}
+    {#if time}
+      <p class='time'>{time}</p>
+    {/if}
   </div>
   <div class='temp'>
-    <span>{currentTemp}</span>
-    <span class='unit'>°C</span>
+    {#if currentTemp}
+      <span>{currentTemp}</span>
+      <span class='unit'>°C</span>
+    {:else if tempMaxMin}
+      <span>{tempMaxMin[0]}</span>
+      <span class='unit'></span>/
+      <span>{tempMaxMin[1]}</span>
+      <span class='unit'>°C</span>
+    {/if}
   </div>
 </div>
 
@@ -59,7 +73,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  .date > *:last-child {
+  .date .time {
     margin-left: 10px;
     font-size: 14px;
   }

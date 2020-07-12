@@ -6,6 +6,7 @@
   import Navigator from './Navigator.svelte';
   import Header from './Header.svelte';
   import Today from '../weather/Today.svelte';
+  import Tomorrow from '../weather/Tomorrow.svelte';
   import Container from '../../components/Container.svelte';
   import { getWeatherData } from '../../api';
 
@@ -36,7 +37,10 @@
             <div>어제</div>
           </Route>
           <Route path='/tomorrow'>
-            <div>내일</div>
+            <Tomorrow
+              day={daily[1]}
+              {timezone}
+            />
           </Route>
           <Route path='/week'>
             <div>일주일</div>

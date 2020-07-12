@@ -4,10 +4,7 @@
 
 <ul class='list'>
   <slot name='minMax' />
-  <li>
-    <div>체감 온도</div>
-    <div>{weatherData.feels_like.toFixed(1)}°C</div>
-  </li>
+  <slot name='feelsLike' />
   <slot />
   <li>
     <div>습도</div>
