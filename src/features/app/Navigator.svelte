@@ -20,6 +20,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background: #fff;
   }
 
   .tabs :global(a) {
