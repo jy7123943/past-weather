@@ -6,6 +6,7 @@
   import Navigator from './Navigator.svelte';
   import Header from './Header.svelte';
   import Today from '../weather/Today.svelte';
+  import Container from '../../components/Container.svelte';
   import { getWeatherData } from '../../api';
 
   export let url = '';
@@ -23,7 +24,7 @@
   });
 </script>
 
-<main>
+<Container>
   <Header />
   {#if $geolocationStore.fetchState !== 'LOADING'}
     {#await weatherPromise}
@@ -53,7 +54,7 @@
       </Router>
     {/await}
   {/if}
-</main>
+</Container>
 
 <style>
   

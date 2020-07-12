@@ -1,6 +1,5 @@
 <script>
   import { convertDateToArray, getIcon } from '../../util';
-  import Container from '../../components/Container.svelte';
   import WeatherCard from '../../components/WeatherCard.svelte';
 
   export let current;
@@ -19,6 +18,4 @@
   console.log('day', day);
 </script>
 
-<Container>
-  <WeatherCard {weatherData} />
-</Container>
+<WeatherCard {weatherData} />
