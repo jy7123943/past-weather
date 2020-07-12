@@ -43,6 +43,7 @@
           <Route path='/'>
             <Today
               {current}
+              day={daily[0]}
               {hourly}
               {timezone}
             />
