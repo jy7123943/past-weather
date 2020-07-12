@@ -8,11 +8,11 @@
     <div>체감 온도</div>
     <div>{weatherData.feels_like.toFixed(1)}°C</div>
   </li>
+  <slot />
   <li>
     <div>습도</div>
     <div>{weatherData.humidity}%</div>
   </li>
-  <slot />
   <li>
     <div>구름</div>
     <div>{weatherData.clouds}%</div>
