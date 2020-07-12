@@ -1,6 +1,4 @@
 <script>
-  import { convertDateToArray, getIcon } from '../util';
-
   export let date;
   export let time;
   export let currentTemp;
