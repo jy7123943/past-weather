@@ -1,21 +1,60 @@
 <script>
-  import { convertDateToArray, getIcon } from '../../util';
   import WeatherCard from '../../components/WeatherCard.svelte';
+  import ImageCard from '../../components/ImageCard.svelte';
+  import DayWeatherList from '../../components/DayWeatherList.svelte';
+  import { convertDateToArray, getIcon } from '../../util';
 
   export let current;
   export let hourly;
   export let day;
-  export let timezone;
+  export let timezone = 'Asia/Seoul';
 
-  const weatherData = {
-    ...current,
-    timezone,
-    day: day.temp,
-    rain: current.rain ? current.rain['1h'] : day.rain,
-    snow: current.snow ? current.snow['1h'] : day.snow
-  };
-  console.log('current', current);
-  console.log('day', day);
+  const [date, time] = convertDateToArray(current.dt, timezone);
+  const currentTemp = current.temp.toFixed(1);
+  const iconURL = getIcon(current.weather[0].icon);
 </script>
 
-<WeatherCard {weatherData} />
+<ImageCard imageName={current.weather[0].icon} />
+<WeatherCard
+  {date}
+  {time}
+  {currentTemp}
+  {iconURL}
+/>
+<DayWeatherList
+  weatherData={current}
+  rain={day.rain}
+  snow={day.snow}
+>
+  <li slot='minMax'>
+    <div>최고/최저</div>
+    <div>
+      {day.temp.max.toFixed(1)}°C /
+      {day.temp.min.toFixed(1)}°C
+    </div>
+  </li>
+  {#if current.rain}
+    <li>
+      <div>현재 강우량</div>
+      <div>{current.rain['1h']}mm</div>
+    </li>
+  {/if}
+  {#if day.rain}
+    <li>
+      <div>오늘 강우량</div>
+      <div>{day.rain}mm</div>
+    </li>
+  {/if}
+  {#if current.snow}
+    <li>
+      <div>현재 강설량</div>
+      <div>{current.snow['1h']}mm</div>
+    </li>
+  {/if}
+  {#if day.snow}
+    <li>
+      <div>오늘 강설량</div>
+      <div>{day.snow}mm</div>
+    </li>
+  {/if}
+</DayWeatherList>
