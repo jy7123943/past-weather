@@ -4,6 +4,6 @@
 
 <style>
   .container {
-    padding: 0 20px 54px;
+    padding: 0 20px 80px;
   }
 </style>
