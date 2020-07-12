@@ -5,7 +5,7 @@
   import geolocationStore from '../../store/geolocation.js';
   import Navigator from './Navigator.svelte';
   import Header from './Header.svelte';
-  import Today from '../today/Today.svelte';
+  import Today from '../weather/Today.svelte';
   import { getWeatherData } from '../../api';
 
   export let url = '';
