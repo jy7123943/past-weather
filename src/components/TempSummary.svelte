@@ -37,7 +37,7 @@
     display: block;
     width: 100%;
     height: 3px;
-    background: #3fc6ff;
+    background: #0091ce;
     border-radius: 5px;
   }
   ul > li {
@@ -56,6 +56,6 @@
   span:first-child {
     margin-bottom: 5px;
     font-size: 12px;
-    color: #3fc6ff;
+    color: #0091ce;
   }
 </style>
