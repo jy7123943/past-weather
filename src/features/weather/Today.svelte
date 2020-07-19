@@ -3,6 +3,7 @@
   import ImageCard from '../../components/ImageCard.svelte';
   import DayWeatherList from '../../components/DayWeatherList.svelte';
   import WeatherTimeline from '../../components/WeatherTimeline.svelte';
+  import TempSummary from '../../components/TempSummary.svelte';
   import { convertDateToArray, getIcon } from '../../util';
 
   export let current;
@@ -63,6 +64,9 @@
     </li>
   {/if}
 </DayWeatherList>
+<TempSummary
+  daySummary={day.temp}
+/>
 <WeatherTimeline
   {hourly}
   {timezone}

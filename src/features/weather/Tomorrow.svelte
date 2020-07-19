@@ -2,11 +2,11 @@
   import WeatherCard from '../../components/WeatherCard.svelte';
   import ImageCard from '../../components/ImageCard.svelte';
   import DayWeatherList from '../../components/DayWeatherList.svelte';
+  import TempSummary from '../../components/TempSummary.svelte';
   import { convertDateToArray, getIcon } from '../../util';
 
   export let day;
   export let timezone = 'Asia/Seoul';
-  console.log('day', day);
 
   const [date] = convertDateToArray(day.dt, timezone);
   const iconURL = getIcon(day.weather[0].icon);
@@ -40,3 +40,6 @@
     </li>
   {/if}
 </DayWeatherList>
+<TempSummary
+  daySummary={day.temp}
+/>
