@@ -7,8 +7,10 @@
   import Header from './Header.svelte';
   import Today from '../weather/Today.svelte';
   import Tomorrow from '../weather/Tomorrow.svelte';
+  import Yesterday from '../weather/Yesterday.svelte';
   import Container from '../../components/Container.svelte';
-  import { getWeatherData } from '../../api';
+  import { getWeatherData, getHistoricalWeatherData } from '../../api';
+  import { getYesterdayTimestamp } from '../../util';
 
   export let url = '';
   let weatherPromise;
@@ -18,10 +20,17 @@
 
     if (!location) return;
 
-    weatherPromise = getWeatherData(
-      location.latitude,
-      location.longitude
-    );
+    weatherPromise = Promise.all([
+      getWeatherData(
+        location.latitude,
+        location.longitude
+      ),
+      getHistoricalWeatherData(
+        location.latitude,
+        location.longitude,
+        getYesterdayTimestamp(),
+      )
+    ]);
   });
 </script>
 
@@ -30,27 +39,31 @@
   {#if $geolocationStore.fetchState !== 'LOADING'}
     {#await weatherPromise}
       <div>Loading...</div>
-    {:then { current, hourly, daily, timezone }}
+    {:then [today, yesterday]}
       <Router url='{ url }'>
         <div>
           <Route path='/yesterday'>
-            <div>어제</div>
+            <Yesterday
+              current={yesterday.current}
+              hourly={yesterday.hourly}
+              timezone={yesterday.timezone}
+            />
           </Route>
           <Route path='/tomorrow'>
             <Tomorrow
-              day={daily[1]}
-              {timezone}
+              day={today.daily[1]}
+              timezone={today.timezone}
             />
           </Route>
           <Route path='/week'>
-            <div>일주일</div>
+            <div>today.daily</div>
           </Route>
           <Route path='/'>
             <Today
-              {current}
-              day={daily[0]}
-              {hourly}
-              {timezone}
+              current={today.current}
+              day={today.daily[0]}
+              hourly={today.hourly}
+              timezone={today.timezone}
             />
           </Route>
         </div>
