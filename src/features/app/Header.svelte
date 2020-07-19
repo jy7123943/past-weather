@@ -3,6 +3,7 @@
   import { onDestroy } from 'svelte';
   import geolocationStore from '../../store/geolocation.js';
   import HeaderTop from '../../components/HeaderTop.svelte';
+  import Loader from '../../components/Loader.svelte';
   import { getAddressByGeolocation } from '../../api';
 
   const geolocationOptions = {
@@ -75,7 +76,7 @@
 
 <header>
   {#if $geolocationStore.fetchState === 'LOADING'}
-    <h1>로딩중</h1>
+    <Loader />
   {:else}
     <HeaderTop
       title={$geolocationStore.location.address.region_1depth_name}

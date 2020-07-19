@@ -10,6 +10,7 @@
   import Yesterday from '../weather/Yesterday.svelte';
   import Week from '../weather/Week.svelte';
   import Container from '../../components/Container.svelte';
+  import Loader from '../../components/Loader.svelte';
   import { getWeatherData, getHistoricalWeatherData } from '../../api';
   import { getYesterdayTimestamp } from '../../util';
 
@@ -39,7 +40,7 @@
   <Header />
   {#if $geolocationStore.fetchState !== 'LOADING'}
     {#await weatherPromise}
-      <div>Loading...</div>
+      <Loader />
     {:then [today, yesterday]}
       <Router url='{ url }'>
         <div>
@@ -78,7 +79,3 @@
     {/await}
   {/if}
 </Container>
-
-<style>
-  
-</style>
