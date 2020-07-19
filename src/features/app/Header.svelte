@@ -9,7 +9,7 @@
   const geolocationOptions = {
     timeout: 1000,
     enableHighAccuracy: true,
-    maximumAge: 100000
+    maximumAge: 5000
   };
 
   const DEFAULT_ADDRESS = {
