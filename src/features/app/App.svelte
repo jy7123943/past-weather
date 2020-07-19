@@ -56,6 +56,8 @@
         </div>
         <Navigator />
       </Router>
+    {:catch error}
+      <div>Error!</div>
     {/await}
   {/if}
 </Container>

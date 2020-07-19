@@ -12,8 +12,8 @@
   const iconURL = getIcon(day.weather[0].icon);
   const currentTemp = 0;
   const tempMaxMin = [
-    day.temp.max.toFixed(0),
-    day.temp.min.toFixed(0),
+    Math.floor(day.temp.max),
+    Math.floor(day.temp.min),
   ];
 </script>
 
