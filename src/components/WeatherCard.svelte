@@ -24,12 +24,12 @@
   <div class='temp'>
     {#if currentTemp}
       <span>{currentTemp}</span>
-      <span class='unit'>°C</span>
+      <span class='unit'>°</span>
     {:else if tempMaxMin}
       <span>{tempMaxMin[0]}</span>
       <span class='unit'></span>/
       <span>{tempMaxMin[1]}</span>
-      <span class='unit'>°C</span>
+      <span class='unit'>°</span>
     {/if}
   </div>
 </div>
@@ -52,11 +52,11 @@
     text-align: right;
     font-size: 54px;
     font-weight: 700;
-    color: #ffde2a;
+    color: #3ec6ff;
   }
   .temp .unit {
     margin-top: 6px;
-    font-size: 25px;
+    font-size: 40px;
   }
   .date {
     display: flex;
