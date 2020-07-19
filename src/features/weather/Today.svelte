@@ -64,6 +64,6 @@
   {/if}
 </DayWeatherList>
 <WeatherTimeline
-  hourly={hourly}
+  {hourly}
   {timezone}
 />
