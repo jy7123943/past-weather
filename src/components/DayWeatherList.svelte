@@ -22,15 +22,22 @@
 
 <style>
   .list {
-    padding: 0 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-row-gap: 20px;
-    margin-top: 10px;
+    grid-row-gap: 18px;
+    margin-top: 5px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background: #f1f2f3;
   }
 
   :global(.list > li > div:first-child) {
     font-weight: 600;
     margin-bottom: 5px;
+    font-size: 14px;
+    color: #999;
+  }
+  :global(.list > li > div:nth-child(2)) {
+    font-size: 25px;
   }
 </style>
