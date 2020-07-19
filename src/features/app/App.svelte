@@ -8,6 +8,7 @@
   import Today from '../weather/Today.svelte';
   import Tomorrow from '../weather/Tomorrow.svelte';
   import Yesterday from '../weather/Yesterday.svelte';
+  import Week from '../weather/Week.svelte';
   import Container from '../../components/Container.svelte';
   import { getWeatherData, getHistoricalWeatherData } from '../../api';
   import { getYesterdayTimestamp } from '../../util';
@@ -56,7 +57,10 @@
             />
           </Route>
           <Route path='/week'>
-            <div>today.daily</div>
+            <Week
+              daily={today.daily}
+              timezone={today.timezone}
+            />
           </Route>
           <Route path='/'>
             <Today
