@@ -6,7 +6,7 @@
   import { getAddressByGeolocation } from '../../api';
 
   const geolocationOptions = {
-    timeout: 1000,
+    timeout: 5000,
     enableHighAccuracy: true,
     maximumAge: 100000
   };
