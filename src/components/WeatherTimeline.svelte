@@ -4,6 +4,7 @@
   export let timezone;
 </script>
 
+<h2 class='headline'>시간별 예보</h2>
 <ul class='timeline'>
   {#each hourly as { dt, weather, temp, rain}}
     <li>
@@ -26,7 +27,7 @@
   .timeline {
     display: flex;
     max-width: 100%;
-    padding: 50px 0 20px;
+    padding: 15px 0;
     overflow-x: scroll;
   }
   .timeline > li {
