@@ -50,13 +50,10 @@
     display: flex;
     justify-content: flex-end;
     text-align: right;
-    font-size: 54px;
+    font-size: 50px;
     font-weight: 700;
     color: #3ec6ff;
-  }
-  .temp .unit {
-    margin-top: 6px;
-    font-size: 40px;
+    align-items: top;
   }
   .date {
     display: flex;
