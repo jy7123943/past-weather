@@ -23,15 +23,34 @@ export const getAddressByGeolocation = async (latitude, longitude) => {
 
 const WEATHER_BASE_URL = 'https://api.openweathermap.org';
 
-export const getWeatherData = async (latitude, longitude, exclude = 'minutely') => {
+export const getWeatherData = async (lat, lon, exclude = 'minutely') => {
   try {
     const { data } = await axios.get(`${WEATHER_BASE_URL}/data/2.5/onecall`, {
       params: {
         units: 'metric',
         lang: 'kr',
-        lat: latitude,
-        lon: longitude,
-        exclude: exclude,
+        lat,
+        lon,
+        exclude,
+        appid: process.env.WEATHER_API_KEY
+      }
+    });
+
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getHistoricalWeatherData = async (lat, lon, dt) => {
+  try {
+    const { data } = await axios.get(`${WEATHER_BASE_URL}/data/2.5/onecall/timemachine`, {
+      params: {
+        units: 'metric',
+        lang: 'kr',
+        lat,
+        lon,
+        dt,
         appid: process.env.WEATHER_API_KEY
       }
     });
