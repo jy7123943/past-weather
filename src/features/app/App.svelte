@@ -11,6 +11,7 @@
   import Week from '../weather/Week.svelte';
   import Container from '../../components/Container.svelte';
   import Loader from '../../components/Loader.svelte';
+  import Error from '../../components/Error.svelte';
   import { getWeatherData, getHistoricalWeatherData } from '../../api';
   import { getYesterdayTimestamp } from '../../util';
 
@@ -75,7 +76,7 @@
         <Navigator />
       </Router>
     {:catch error}
-      <div>Error!</div>
+      <Error />
     {/await}
   {/if}
 </Container>
