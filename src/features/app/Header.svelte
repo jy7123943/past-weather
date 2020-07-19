@@ -7,7 +7,7 @@
   import { getAddressByGeolocation } from '../../api';
 
   const geolocationOptions = {
-    timeout: 1000,
+    timeout: 3000,
     enableHighAccuracy: true,
     maximumAge: 5000
   };
@@ -63,15 +63,19 @@
     }));
   };
 
-  if (!navigator.geolocation) {
+  try {
+    if (!navigator.geolocation) {
+      handleError();
+    }
+
+    const watchID = navigator.geolocation.watchPosition(handleSuccess, handleError, geolocationOptions);
+
+    onDestroy(() => {
+      navigator.geolocation.clearWatch(watchID);
+    });
+  } catch {
     handleError();
   }
-
-  const watchID = navigator.geolocation.watchPosition(handleSuccess, handleError, geolocationOptions);
-
-  onDestroy(() => {
-    navigator.geolocation.clearWatch(watchID);
-  });
 </script>
 
 <header>
