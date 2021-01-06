@@ -18,7 +18,7 @@
     "rollup-plugin-terser": "^5.1.2"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "moment-timezone": "^0.5.31",
     "sirv-cli": "^0.4.4",
