@@ -22,7 +22,7 @@
     "dotenv": "^8.2.0",
     "moment-timezone": "^0.5.31",
     "sirv-cli": "^0.4.4",
-    "svelte": "^3.24.0",
+    "svelte": "^3.49.0",
     "svelte-routing": "^1.4.2"
   }
 }
